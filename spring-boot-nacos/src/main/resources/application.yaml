@@ -1,0 +1,5 @@
+server:
+  port: 9001
+nacos:
+  config:
+    serverAddr: 127.0.0.1:8848
