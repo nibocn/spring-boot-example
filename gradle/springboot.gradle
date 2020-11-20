@@ -1,0 +1,13 @@
+apply plugin: 'org.springframework.boot'
+
+bootRun {
+    // Spring boot 插件运行时支持传入参数变量
+    systemProperties System.properties
+    // 在控制台启动时日志输出总是启用 ansi 输出（能增加输出文字的颜色高亮显示）
+    jvmArgs = [ "-Dspring.output.ansi.enabled=ALWAYS" ]
+    // 使用 bootRun 运行时集成 JRebel
+    if (project.hasProperty('jrebelAgent')) {
+        jvmArgs += jrebelAgent
+    }
+}
+

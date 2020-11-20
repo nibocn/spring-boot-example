@@ -1,0 +1,9 @@
+apply plugin: 'eclipse'
+
+eclipse {
+    classpath {
+        downloadSources = false
+        downloadJavadoc = false
+    }
+}
+

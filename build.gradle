@@ -1,0 +1,41 @@
+plugins {
+    id 'org.springframework.boot' version "$VER_SPRING_BOOT" apply false
+}
+
+allprojects {
+    version = '0.0.1-SNAPSHOT'
+}
+
+subprojects {
+    apply from: "$rootDir/gradle/java.gradle"
+    apply from: "$rootDir/gradle/test.gradle"
+    apply from: "$rootDir/gradle/idea.gradle"
+    apply from: "$rootDir/gradle/eclipse.gradle"
+    apply from: "$rootDir/gradle/springboot.gradle"
+
+    configurations {
+        parentBom
+        compileOnly.extendsFrom(parentBom)
+        annotationProcessor.extendsFrom(parentBom)
+        implementation.extendsFrom(parentBom)
+        testAnnotationProcessor.extendsFrom(parentBom)
+        all {
+            resolutionStrategy {
+                // 对于 SNAPSHOT 版本的依赖包不进行缓存
+                cacheChangingModulesFor 0, 'seconds'
+            }
+        }
+    }
+
+    dependencies {
+        parentBom platform("org.springframework.boot:spring-boot-dependencies:$VER_SPRING_BOOT")
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url "$ALIYUN_MAVEN_REPO_URL" }
+        mavenCentral()
+        jcenter()
+    }
+
+}

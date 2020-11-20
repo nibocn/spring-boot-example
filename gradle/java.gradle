@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+sourceCompatibility = VER_JAVA
+targetCompatibility = VER_JAVA
+
+compileJava {
+    options.encoding 'utf-8'
+}
+
