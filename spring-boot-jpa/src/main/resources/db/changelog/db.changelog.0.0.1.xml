@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+>
+  <changeSet id="202011211816001" author="master">
+    <createTable tableName="sys_user" remarks="用户表">
+      <column name="id" type="char(36)" remarks="主键 id">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="user_name" type="varchar(50)" remarks="用户名" />
+      <column name="age" type="int" remarks="年龄" />
+      <column name="email" type="varchar(50)" remarks="邮箱" />
+    </createTable>
+  </changeSet>
+  <changeSet id="202011211824001" author="master">
+    <createTable tableName="sys_role" remarks="角色表">
+      <column name="id" type="char(36)" remarks="主键 id">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="role_name" type="varchar(50)" remarks="角色名" />
+      <column name="enabled" type="boolean" defaultValueBoolean="true" remarks="启用" />
+    </createTable>
+  </changeSet>
+  <changeSet id="202011301412001" author="master">
+    <createTable tableName="sys_user_role" remarks="用户角色关联表">
+      <column name="user_id" type="char(36)" remarks="用户 id">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="role_id" type="char(36)" remarks="角色 id">
+        <constraints primaryKey="true" />
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="202011301734001" author="manster">
+    <sqlFile path="db/changelog/data/init_data.sql" />
+  </changeSet>
+</databaseChangeLog>
