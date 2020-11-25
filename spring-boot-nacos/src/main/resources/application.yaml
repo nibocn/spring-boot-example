@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: example
 server:
   port: 9001
 nacos:
@@ -6,8 +9,15 @@ nacos:
       # 启用配置预加载，通过配置的而不在类上加注解的方式运行 Nacos 时需要启用
       enable: true
     serverAddr: 127.0.0.1:8848
-    dataId: example
+    dataId: ${spring.application.name}
     # 设置文件类型为 yaml
     type: yaml
     # 启用配置自动刷新
     autoRefresh: true
+    # 通过命名空间区分不同的环境
+    namespace: ${spring.profiles.active:}
+    # 通过 ext-config 参数扩展公共配置
+    extConfig:
+      - dataId: common
+        type: yaml
+        autoRefresh: true
