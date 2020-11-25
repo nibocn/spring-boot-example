@@ -2,4 +2,12 @@ server:
   port: 9001
 nacos:
   config:
+    bootstrap:
+      # 启用配置预加载，通过配置的而不在类上加注解的方式运行 Nacos 时需要启用
+      enable: true
     serverAddr: 127.0.0.1:8848
+    dataId: example
+    # 设置文件类型为 yaml
+    type: yaml
+    # 启用配置自动刷新
+    autoRefresh: true
