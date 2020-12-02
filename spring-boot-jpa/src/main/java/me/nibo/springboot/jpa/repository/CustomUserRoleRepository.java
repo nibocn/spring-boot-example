@@ -1,5 +1,6 @@
 package me.nibo.springboot.jpa.repository;
 
+import me.nibo.springboot.jpa.dto.UserQueryParamDto;
 import me.nibo.springboot.jpa.dto.UserRoleDto;
 
 import org.springframework.data.repository.NoRepositoryBean;
@@ -13,6 +14,6 @@ import java.util.List;
  */
 @NoRepositoryBean
 public interface CustomUserRoleRepository {
-    List<UserRoleDto> listUserRole();
+    List<UserRoleDto> listUserRole(UserQueryParamDto queryParam);
 
 }

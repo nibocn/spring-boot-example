@@ -1,5 +1,6 @@
 package me.nibo.springboot.jpa.service.impl;
 
+import me.nibo.springboot.jpa.dto.UserQueryParamDto;
 import me.nibo.springboot.jpa.dto.UserRoleDto;
 import me.nibo.springboot.jpa.repository.CustomUserRoleRepository;
 import me.nibo.springboot.jpa.repository.UserRepository;
@@ -27,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserRoleDto> findUserRoleList() {
-        return customUserRoleRepository.listUserRole();
+    public List<UserRoleDto> findUserRoleList(UserQueryParamDto queryParam) {
+        return customUserRoleRepository.listUserRole(queryParam);
     }
 
 }

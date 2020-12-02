@@ -1,5 +1,6 @@
 package me.nibo.springboot.jpa.service;
 
+import me.nibo.springboot.jpa.dto.UserQueryParamDto;
 import me.nibo.springboot.jpa.dto.UserRoleDto;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
  * @author NiBo
  */
 public interface UserService {
-    List<UserRoleDto> findUserRoleList();
+    List<UserRoleDto> findUserRoleList(UserQueryParamDto queryParam);
 }

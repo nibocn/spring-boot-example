@@ -1,5 +1,6 @@
 package me.nibo.springboot.jpa.web;
 
+import me.nibo.springboot.jpa.dto.UserQueryParamDto;
 import me.nibo.springboot.jpa.dto.UserRoleDto;
 import me.nibo.springboot.jpa.service.UserService;
 
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("roles")
-    public ResponseEntity<List<UserRoleDto>> findUserRoleList() {
-        return ResponseEntity.ok(userService.findUserRoleList());
+    public ResponseEntity<List<UserRoleDto>> findUserRoleList(UserQueryParamDto queryParam) {
+        return ResponseEntity.ok(userService.findUserRoleList(queryParam));
     }
 }
