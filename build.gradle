@@ -29,6 +29,14 @@ subprojects {
 
     dependencies {
         parentBom platform("org.springframework.boot:spring-boot-dependencies:$VER_SPRING_BOOT")
+
+        compileOnly "org.projectlombok:lombok:$VER_LOMBOK"
+        annotationProcessor "org.projectlombok:lombok:$VER_LOMBOK"
+
+        testAnnotationProcessor "org.projectlombok:lombok:$VER_LOMBOK"
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
     }
 
     repositories {
