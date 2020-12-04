@@ -5,6 +5,7 @@ import me.nibo.springboot.jpa.dto.UserRoleDto;
 import me.nibo.springboot.jpa.service.UserService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,14 @@ public class UserController {
 
     @GetMapping("roles")
     public ResponseEntity<List<UserRoleDto>> findUserRoleList(UserQueryParamDto queryParam) {
-        return ResponseEntity.ok(userService.findUserRoleList(queryParam));
+        List<UserRoleDto> list = userService.findUserRoleList(queryParam);
+        if (CollectionUtils.isEmpty(list)) {
+            UserRoleDto userRoleDto = new UserRoleDto();
+            userRoleDto.setAge(25);
+            userRoleDto.setUsername("张三");
+            userRoleDto.setUserId("dwsdfsdf12222312");
+            list.add(userRoleDto);
+        }
+        return ResponseEntity.ok(list);
     }
 }
