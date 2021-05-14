@@ -43,7 +43,6 @@ subprojects {
         mavenLocal()
         maven { url "$ALIYUN_MAVEN_REPO_URL" }
         mavenCentral()
-        jcenter()
     }
 
 }
