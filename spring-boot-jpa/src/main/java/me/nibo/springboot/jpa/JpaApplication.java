@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SuppressWarnings({ "PMD.UseUtilityClass" })
 public class JpaApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(JpaApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(JpaApplication.class, args);
+  }
 }
